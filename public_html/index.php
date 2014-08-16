@@ -73,9 +73,9 @@ foreach ($all_sites as $webpage_url => $webpage_rank)
 		$webpage_desc = $xpath->query('/html/head/meta[@name="description"]/@content')->item(0)->nodeValue;
 	}
 
-	$clean_webpage_url = preg_replace('/[^A-Za-z0-9\-\,\.\'\:]/', ' ', $webpage_url);
+	//$clean_webpage_url = preg_replace('/[^A-Za-z0-9\-\,\.\'\:]/', ' ', $webpage_url);
 	$clean_webpage_title = preg_replace('/[^A-Za-z0-9\-\,\.\'\:]/', ' ', $webpage_title);
 	$clean_webpage_desc = preg_replace('/[^A-Za-z0-9\-\,\.\'\:]/', ' ', $webpage_desc);
-	echo "<h3><a href='http://$clean_webpage_url'>$clean_webpage_title</a></h3><p>$clean_webpage_desc</p>\n";
+	echo "<h3><a href='http://$webpage_url'>$clean_webpage_title</a></h3><p>$clean_webpage_desc</p>\n";
 }
 echo "</div></body></html>";
