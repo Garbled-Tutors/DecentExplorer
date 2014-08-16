@@ -53,8 +53,8 @@ BICAIT3L72HF5ZOOIXMHQWYQUQHYWCLCH
 
 		.config/priv_webpages		Identical to the file above except these aren't shared
 
-		.config/proof_dec				This file contains a list of each shared file and the most recent hash. This is used to verify the files were downloaded without corruption or modification
-		.config/proof_enc				This is the above file encrypted with the users private key
+		.config/file_list				This file contains a list of each shared file and the most recent hash. This is used to verify the files were downloaded without corruption or modification
+		.config/proof						A hash of the above file is created, encrypted, and stored here. This is used to verify the authenticity of the above file
 
 
 	data/							This is a directory containg your synced folders, your public folder should be kept here
