@@ -42,7 +42,11 @@ if ($handle = opendir('../data')) {
 			@$doc->loadHTMLFile("http://$webpage_url");
 			$xpath = new DOMXPath($doc);
 			$webpage_title = $xpath->query('//title')->item(0)->nodeValue;
-			$webpage_desc = $xpath->query('/html/head/meta[@name="description"]/@content')->item(0)->nodeValue;
+			$webpage_desc = $xpath->query('/html/head/meta[@property="og:description"]/@content')->item(0)->nodeValue;
+			if ($webpage_desc == '')
+			{
+				$webpage_desc = $xpath->query('/html/head/meta[@name="description"]/@content')->item(0)->nodeValue;
+			}
 
 			$clean_webpage_url = preg_replace('/[^A-Za-z0-9\-\,\.\'\:]/', ' ', $webpage_url);
 			$clean_webpage_title = preg_replace('/[^A-Za-z0-9\-\,\.\'\:]/', ' ', $webpage_title);
