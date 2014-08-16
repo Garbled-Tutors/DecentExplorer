@@ -64,7 +64,7 @@ arsort($all_sites);
 foreach ($all_sites as $webpage_url => $webpage_rank)
 {
 	$doc = new DOMDocument();
-	@$doc->loadHTMLFile("http://$webpage_url");
+	@$doc->loadHTMLFile("$webpage_url");
 	$xpath = new DOMXPath($doc);
 	$webpage_title = $xpath->query('//title')->item(0)->nodeValue;
 	$webpage_desc = $xpath->query('/html/head/meta[@property="og:description"]/@content')->item(0)->nodeValue;
@@ -76,6 +76,6 @@ foreach ($all_sites as $webpage_url => $webpage_rank)
 	//$clean_webpage_url = preg_replace('/[^A-Za-z0-9\-\,\.\'\:]/', ' ', $webpage_url);
 	$clean_webpage_title = preg_replace('/[^A-Za-z0-9\-\,\.\'\:]/', ' ', $webpage_title);
 	$clean_webpage_desc = preg_replace('/[^A-Za-z0-9\-\,\.\'\:]/', ' ', $webpage_desc);
-	echo "<h3><a href='http://$webpage_url'>$clean_webpage_title</a></h3><p>$clean_webpage_desc</p>\n";
+	echo "<h3><a href='$webpage_url'>$clean_webpage_title</a></h3><p>$clean_webpage_desc</p>\n";
 }
 echo "</div></body></html>";
