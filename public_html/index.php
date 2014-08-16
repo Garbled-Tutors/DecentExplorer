@@ -57,9 +57,47 @@ foreach ($user_tsv as $user_string)
 		}
 	}
 }
-echo "<html><head><title>iShared - Internet Shared</title></head><body>\n";
-echo "<h1>iShared</h1><h2>Decentralized Internet Sharing Algorithm</h2>";
-echo "<div style='margin-left: 50px;width: 800px;'>\n";
+?>
+<html><head><title>iShared - Internet Shared</title>
+<style>
+.arrow.up {
+	background-image: url("images/sprite-reddit.jzJhk9_9j8Q.png");
+	background-position: -42px -818px;
+	background-repeat: no-repeat;
+}
+.arrow {
+	background-position: center center;
+	background-repeat: no-repeat;
+	cursor: pointer;
+	display: block;
+	height: 14px;
+	margin: 2px auto 0;
+	outline: medium none;
+	width: 15px;
+}
+.arrow.down {
+	background-image: url("images/sprite-reddit.jzJhk9_9j8Q.png");
+	background-position: 0 -818px;
+	background-repeat: no-repeat;
+}
+.score {
+	color: #c6c6c6;
+	text-align: center;
+}
+.vote_div {
+	float: left;
+	padding: 25px;
+}
+.entry {
+	vertical-align: middle;
+	height: 100px;
+	overflow: hidden;
+}
+</style>
+</head><body>
+<h1>iShared</h1><h2>Decentralized Internet Sharing Algorithm</h2>
+<div style='margin-left: 50px;width: 800px;'>
+<?
 arsort($all_sites);
 foreach ($all_sites as $webpage_url => $webpage_rank)
 {
@@ -76,6 +114,18 @@ foreach ($all_sites as $webpage_url => $webpage_rank)
 	//$clean_webpage_url = preg_replace('/[^A-Za-z0-9\-\,\.\'\:]/', ' ', $webpage_url);
 	$clean_webpage_title = preg_replace('/[^A-Za-z0-9\-\,\.\'\:]/', ' ', $webpage_title);
 	$clean_webpage_desc = preg_replace('/[^A-Za-z0-9\-\,\.\'\:]/', ' ', $webpage_desc);
-	echo "<h3><a href='$webpage_url'>$clean_webpage_title</a></h3><p>$clean_webpage_desc</p>\n";
+?>
+<div class='entry'>
+	<div class="vote_div">
+		<div class='arrow up'></div>
+		<div class="score">3506</div>
+		<div class="arrow down"></div>
+	</div>
+	<div style='float: left;width: 700px;padding-left: 10px;'>
+	<h3><a href='$webpage_url'><? echo $clean_webpage_title; ?></a></h3><p><? echo $clean_webpage_desc; ?></p>
+	</div>
+	<div style='clear: both;'></div>
+</div>
+<?
 }
 echo "</div></body></html>";
