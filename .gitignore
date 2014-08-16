@@ -1,9 +1,3 @@
 .*~
 data/*
-.config/users
-.config/file_list
-.config/priv_key  
-.config/pub_key  
-.config/proof  
-.config/self  
-.config/webpages
+.config/*
