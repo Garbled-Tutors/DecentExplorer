@@ -26,19 +26,32 @@ foreach ($user_tsv as $user_string)
 			$webpage_data = explode("\t",$webpage_string);
 			if (isset($webpage_data[1]))
 			{
-				if (!isset($all_sites[$webpage_data[1]]))
+				$filter_page = 0;
+				if (isset($_GET['r']))
 				{
-					$all_sites[$webpage_data[1]] = 0;
+					$webpage_tags = explode(",",$webpage_data[2]);
+					if (!in_array($_GET['r'],$webpage_tags))
+					{
+						$filter_page = 1;
+					}
 				}
-				if ($user_mod > 0)
+				if ($filter_page == 0)
 				{
-					$all_sites[$webpage_data[1]] += ($webpage_data[0] * $user_mod);
-					//echo "${webpage_data[1]} += ${webpage_data[0]} * $user_mod<br>\n";
-				}
-				elseif ($webpage_data[0] > 0)
-				{
-					$all_sites[$webpage_data[1]] += $user_mod;
-					//echo "${webpage_data[1]} += $user_mod<br>\n";
+					if (!isset($all_sites[$webpage_data[1]]))
+					{
+						$all_sites[$webpage_data[1]] = 0;
+					}
+
+					if ($user_mod > 0)
+					{
+						$all_sites[$webpage_data[1]] += ($webpage_data[0] * $user_mod);
+						//echo "${webpage_data[1]} += ${webpage_data[0]} * $user_mod<br>\n";
+					}
+					elseif ($webpage_data[0] > 0)
+					{
+						$all_sites[$webpage_data[1]] += $user_mod;
+						//echo "${webpage_data[1]} += $user_mod<br>\n";
+					}
 				}
 			}
 		}
@@ -63,6 +76,6 @@ foreach ($all_sites as $webpage_url => $webpage_rank)
 	$clean_webpage_url = preg_replace('/[^A-Za-z0-9\-\,\.\'\:]/', ' ', $webpage_url);
 	$clean_webpage_title = preg_replace('/[^A-Za-z0-9\-\,\.\'\:]/', ' ', $webpage_title);
 	$clean_webpage_desc = preg_replace('/[^A-Za-z0-9\-\,\.\'\:]/', ' ', $webpage_desc);
-	echo "<h3><a href='$clean_webpage_url'>$clean_webpage_title</a></h3><p>$clean_webpage_desc</p>\n";
+	echo "<h3><a href='http://$clean_webpage_url'>$clean_webpage_title</a></h3><p>$clean_webpage_desc</p>\n";
 }
 echo "</div></body></html>";
