@@ -44,12 +44,12 @@ BICAIT3L72HF5ZOOIXMHQWYQUQHYWCLCH
 8	BVQZMJYSHCVT2Y3Z3KCHLXCWHXPA72E52
 
 		.config/priv_users			Identical to the file above except these aren't shared
-		.config/webpages				Here is a list of webpages that you have ranked. It is two columns atm, later there will be more. The first column is your rating, and the second column is the url
+		.config/webpages				Here is a list of webpages that you have ranked. The first column is your rating, the second column is the url, and the last is a comma seperated list of tags for the page
 
-5      www.google.com
-3      www.reddit.com
-1      www.yahoo.com
-6      www.wired.com
+5	www.google.com	search_engine
+3	www.reddit.com	news,forum
+1	www.yahoo.com	search_engine
+6	www.wired.com	news,technology
 
 		.config/priv_webpages		Identical to the file above except these aren't shared
 
