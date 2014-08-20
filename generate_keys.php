@@ -1,5 +1,4 @@
 <?
-//TODO: Test this code to make sure it is working as expected
 include 'php_constants.php';
 
 srand((double) microtime() * 1000000); 

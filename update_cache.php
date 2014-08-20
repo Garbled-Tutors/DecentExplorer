@@ -1,6 +1,7 @@
 <?
-//TODO: NEEDS TESTING and you need to add tags to the cache
-include 'php_constants.php';
+//TODO: need to add tags to the cache
+//include 'php_constants.php';
+include 'create_proof.php'; //Runs this first so that the current users data directory is accurate
 
 $pub_key = file_get_contents(constant('PUBLIC_KEY_LOC'));
 $pub_key_lines = explode("\n",$pub_key);
@@ -25,6 +26,7 @@ foreach ($user_tsv as $user_string)
 		$user_webpage_list_array = explode("\n",$user_webpage_list_string);
 		foreach ($user_webpage_list_array as $webpage_data_string)
 		{
+			//echo "Webpage string - $webpage_data_string\n";
 			$webpage_data_array = explode("\t",$webpage_data_string);
 			if (isset($webpage_data_array[constant('NOTEWORTHY_WEBPAGE_URL_COL')]))
 			{
@@ -37,14 +39,17 @@ foreach ($user_tsv as $user_string)
 				$current_page_vote = $webpage_data_array[constant('NOTEWORTHY_WEBPAGE_VOTE_COL')];
 				if ($user_trust > 0)
 				{
+					//echo "$current_url\t+ ($current_page_vote * $user_trust)\n";
 					$all_pages[$current_url] += ($current_page_vote * $user_trust);
 				}
 				elseif ($current_page_vote > 0)
 				{
+					//echo "$current_url\t+ ($user_trust)\n";
 					$all_pages[$current_url] += $user_trust;
 				}
 				if ($current_users_directory == $user_directory)
 				{
+					//echo "$current_url\t+ ($current_page_vote)\n";
 					$current_users_pages[$current_url] = $current_page_vote;
 				}
 			}
