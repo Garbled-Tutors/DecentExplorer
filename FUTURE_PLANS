@@ -1,0 +1,12 @@
+This will eventually have a commenting system. I am conflicted about how this should look and about several expected issues
+	Issues
+		People can regularly change their username which may lead to confusion
+			I would like to automatically create a nick name for someone whenever a user comments on them. Basically if I respond to your post, your current nickname is now locked. If you change your nickname I would see
+				NewNickname (Old Nickname)
+		Two people with the same nickname
+			Creating a last name would be a good solution, the lastname would be x chars of their public key.
+		Deleting Posts and Privacy (Should we create a copy of any post that we comment on? This would prevent people from permently deleting their comments)
+
+Sharing Videos and Pictures
+	I think this is a perfect platform or sharing videos and pictures. There are many subreddits dedicated to sharing pictures and by using this system we could eliminate duplicates, images that have been seen before
+		will be labeled as such even if a new user uploads it (assuming he hasn't changed it in anyway, such as lowering the resolution)
