@@ -21,6 +21,7 @@ foreach ($user_tsv as $user_string)
 	{
 		$user_directory = $user_data[constant('NOTEWORTHY_USER_PUB_KEY_COL')];
 		$user_trust = $user_data[constant('NOTEWORTHY_USER_VOTE_COL')];
+		//echo "User Trust - $user_trust\n";
 
 		$user_webpage_list_string = file_get_contents(constant('DATA_DIRECTORY') . "/$user_directory/" . constant('NOTEWORTHY_WEBPAGES_FILE_NAME'));
 		$user_webpage_list_array = explode("\n",$user_webpage_list_string);
@@ -37,6 +38,7 @@ foreach ($user_tsv as $user_string)
 				}
 
 				$current_page_vote = $webpage_data_array[constant('NOTEWORTHY_WEBPAGE_VOTE_COL')];
+				//echo "Current Page Vote - $current_page_vote\n";
 				if ($user_trust > 0)
 				{
 					//echo "$current_url\t+ ($current_page_vote * $user_trust)\n";
@@ -98,6 +100,7 @@ foreach ($all_pages as $webpage_url => $webpage_rank)
 	$page_detail_array[constant('CACHED_PAGE_TITLE_COL')] = $clean_webpage_title;
 	$page_detail_array[constant('CACHED_PAGE_DESC_COL')] = $clean_webpage_desc;
 	$page_detail_string = implode("\t",$page_detail_array) . "\n";
+	//echo "Saving $clean_webpage_url - $webpage_rank\n";
 	//$page_details = "$webpage_rank\t$clean_webpage_url\t$clean_webpage_title\t$clean_webpage_desc\n";
 
 	fwrite($fh, $page_detail_string);
