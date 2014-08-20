@@ -50,7 +50,7 @@ if (isset($_GET['i']) and isset($_GET['v']))
 	else
 	{
 		$new_page_detail_array = array();
-		$new_page_detail_array[constant('NOTEWORTHY_WEBPAGE_USER_VOTE_COL')] = $_GET['v'];
+		$new_page_detail_array[constant('NOTEWORTHY_WEBPAGE_VOTE_COL')] = $_GET['v'];
 		$new_page_detail_array[constant('NOTEWORTHY_WEBPAGE_URL_COL')] = $webpage_url;
 		$new_page_detail_array[constant('NOTEWORTHY_WEBPAGE_TAGS_COL')] = '';
 
